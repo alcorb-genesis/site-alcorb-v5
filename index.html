@@ -532,7 +532,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <button class="nl" onclick="showPage('projet')">Le projet</button>
     <button class="nl" onclick="showPage('token')">Token ALCB</button>
     <button class="nl" onclick="showPage('faq')">FAQ</button>
-    <button class="nl admin-btn" onclick="showPage('admin')">🔐 Corby Admin</button>
+    <button class="nl admin-btn" onclick="showPage('admin')" style="display:none">🔐 Corby Admin</button>
     <button class="nl cta" onclick="showPage('beta')">Rejoindre la bêta</button>
   </nav>
 </header>
@@ -549,7 +549,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <p class="hero-pitch">
       Le monde a besoin de deux choses que les plateformes actuelles ne donnent pas vraiment :
       une parole libre et protégée, et une IA qui vous appartient vraiment.<br>
-      <strong>Alcorb construit ces deux libertés — et ALCB est la monnaie qui les fait vivre.</strong>
+      <strong>Alcorb construit ces deux libertés — pour que votre parole et vos données vous appartiennent vraiment.</strong>
     </p>
     <div class="hero-ctas">
       <button class="btn-p" onclick="showPage('beta')">🚀 Rejoindre la bêta</button>
@@ -584,7 +584,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
         <div class="pb">
           <div style="display:flex;gap:7px;margin-bottom:10px">
             <button class="tab on" style="border-radius:8px;font-size:.63rem;padding:7px 12px" onclick="setMsgMode('card',this)">💳 Par carte</button>
-            <button class="tab" style="border-radius:8px;font-size:.63rem;padding:7px 12px" onclick="setMsgMode('wallet',this)">🔑 Wallet</button>
+            <button class="tab" style="display:none" onclick="setMsgMode('wallet',this)">🔑 Wallet</button>
           </div>
           <div class="enc"><span class="enc-dot"></span>Chiffrement actif — AES-256-GCM dans ce navigateur</div>
           <div class="row">
@@ -601,25 +601,25 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
           <div class="charcount"><span id="m-cc">0</span> / 2000</div>
           <div class="prices" id="m-prices">
             <div class="price sel" onclick="pickPrice(this,.10,100)">
-              <div class="p-eur">0,10€</div><div class="p-alcb">100 ALCB</div><div class="p-desc">Bref</div>
+              <div class="p-eur">0,10€</div><div class="p-alcb">100 crédits</div><div class="p-desc">Bref</div>
             </div>
             <div class="price" onclick="pickPrice(this,.50,500)">
               <span class="p-pop">★</span>
-              <div class="p-eur">0,50€</div><div class="p-alcb">500 ALCB</div><div class="p-desc">Standard</div>
+              <div class="p-eur">0,50€</div><div class="p-alcb">500 crédits</div><div class="p-desc">Standard</div>
             </div>
             <div class="price" onclick="pickPrice(this,1,1000)">
-              <div class="p-eur">1,00€</div><div class="p-alcb">1 000 ALCB</div><div class="p-desc">Long</div>
+              <div class="p-eur">1,00€</div><div class="p-alcb">1 000 crédits</div><div class="p-desc">Long</div>
             </div>
             <div class="price" onclick="pickPrice(this,5,5000)">
-              <div class="p-eur">5,00€</div><div class="p-alcb">5 000 ALCB</div><div class="p-desc">Fichier</div>
+              <div class="p-eur">5,00€</div><div class="p-alcb">5 000 crédits</div><div class="p-desc">Fichier</div>
             </div>
           </div>
           <div class="fees">
             <div class="fee"><span class="fl">Montant</span><span class="fv" id="f-amt">0,10 €</span></div>
-            <div class="fee"><span class="fl">Conversion carte→ALCB (~1,5%)</span><span class="fv">−<span id="f-fee">0,0015</span> €</span></div>
-            <div class="fee"><span class="fl">ALCB reçus</span><span class="fv hi" id="f-alcb">~98,5 ALCB</span></div>
-            <div class="fee"><span class="fl">Burn protocole (0,01% 🔥)</span><span class="fv brn" id="f-burn">−0,010 ALCB</span></div>
-            <div class="fee"><span class="fl">Livré au destinataire</span><span class="fv hi" id="f-net">~98,49 ALCB</span></div>
+            <div class="fee"><span class="fl">Frais carte (~1,5%)</span><span class="fv">−<span id="f-fee">0,0015</span> €</span></div>
+            <div class="fee"><span class="fl">Crédits reçus</span><span class="fv hi" id="f-alcb">~98,5 crédits</span></div>
+            <div class="fee"><span class="fl">Frais de service (0,01%)</span><span class="fv brn" id="f-burn">−0,010 crédits</span></div>
+            <div class="fee"><span class="fl">Livré au destinataire</span><span class="fv hi" id="f-net">~98,49 crédits</span></div>
             <div class="fee-total"><span class="ftl">Coût total</span><span class="ftv" id="f-total">0,10 € tout compris</span></div>
           </div>
           <button class="btn-pay" onclick="sendMsg()">
@@ -627,7 +627,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
           </button>
           <div class="sec-tags">
             <span class="stag">✓ AES-256-GCM</span><span class="stag">✓ Clé éphémère</span>
-            <span class="stag">✓ IPFS</span><span class="stag">✓ Solana &lt;1s</span>
+            <span class="stag">✓ IPFS</span>
           </div>
         </div>
       </div>
@@ -646,20 +646,15 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
         <div class="pb">
           <!-- Plan selector -->
           <div class="orb-plan-select">
-            <div class="oplan sel" onclick="selectOrbPlan(this,'free',15,'0€')">
+            <div class="oplan sel" onclick="selectOrbPlan(this,'free',30,'0€')">
               <div class="oplan-name">Essai</div>
-              <div class="oplan-time">15 min</div>
+              <div class="oplan-time">30 jours</div>
               <div class="oplan-price">Gratuit</div>
             </div>
-            <div class="oplan" onclick="selectOrbPlan(this,'std',30,'9€')">
-              <div class="oplan-name">Standard</div>
-              <div class="oplan-time">30 min</div>
-              <div class="oplan-price">9€/mois</div>
-            </div>
-            <div class="oplan" onclick="selectOrbPlan(this,'prem',60,'19€')">
-              <div class="oplan-name">Premium</div>
-              <div class="oplan-time">60 min</div>
-              <div class="oplan-price">19€/mois</div>
+            <div class="oplan" onclick="selectOrbPlan(this,'orb',60,'19,90€')">
+              <div class="oplan-name">Orb</div>
+              <div class="oplan-time">Mémoire permanente</div>
+              <div class="oplan-price">19,90€/mois</div>
             </div>
           </div>
           <!-- Timer -->
@@ -669,11 +664,11 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
               <div>
                 <div class="timer-label" id="orb-timer-label">TEMPS RESTANT AUJOURD'HUI</div>
                 <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(139,143,173,.5)">
-                  Décompte actif uniquement pendant la réponse d'Orb
+                  Appuyez sur Envoyer — le décompte commence et s'arrête dès qu'Orb finit de répondre
                 </div>
               </div>
             </div>
-            <div class="timer-display" id="orb-timer">15:00</div>
+            <div class="timer-display" id="orb-timer">30:00</div>
           </div>
           <!-- Chat -->
           <div class="orb-chat" id="orb-chat">
@@ -688,7 +683,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
               onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendOrb()}"></textarea>
             <button class="orb-send" onclick="sendOrb()" id="orb-send-btn">➤</button>
           </div>
-          <div class="orb-disclaimer">Essai gratuit · 1 session · Vos données restent privées</div>
+          <div class="orb-disclaimer">Essai 30 jours · Mémoire permanente dès J1 · Vos données restent privées</div>
         </div>
       </div>
     </div>
@@ -708,9 +703,9 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="card-body">
       <div class="feat-grid">
         <div class="feat"><h4>AES-256-GCM</h4><p>Chiffrement militaire. Clé éphémère X25519 détruite après chaque message. Forward secrecy garanti.</p></div>
-        <div class="feat"><h4>Sans wallet requis</h4><p>Votre destinataire n'a pas besoin de compte crypto. Un email suffit. Escrow 90 jours.</p></div>
+        <div class="feat"><h4>Accès par email</h4><p>Aucun compte crypto requis. Votre destinataire reçoit un lien par email pour lire son message.</p></div>
         <div class="feat"><h4>IPFS décentralisé</h4><p>Vos messages stockés de façon décentralisée. Aucun serveur central. Incensurable.</p></div>
-        <div class="feat"><h4>Cashback automatique</h4><p>Les tokens non réclamés sont redistribués. 50% cashback utilisateurs actifs.</p></div>
+        
       </div>
     </div>
   </div>
@@ -720,8 +715,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
       <div class="feat-grid">
         <div class="feat"><h4>Mémoire permanente</h4><p>Orb se souvient de tout depuis votre premier échange. Plus vous l'utilisez, plus il vous connaît.</p></div>
         <div class="feat"><h4>Temps actif honnête</h4><p>Vous payez du temps d'interaction réel. Le compteur s'arrête quand vous ne l'utilisez pas.</p></div>
-        <div class="feat"><h4>Serveur privé Phase 2</h4><p>Dès 500 abonnés, migration vers Llama 3 local. Vos données ne quittent jamais nos serveurs.</p></div>
-        <div class="feat"><h4>Co-piloté par l'IA</h4><p>La plateforme Alcorb est elle-même co-pilotée par une intelligence artificielle interne.</p></div>
+        <div class="feat"><h4>Serveur privé Alcorb</h4><p>Orb tourne sur l'infrastructure Alcorb dès le lancement. Vos conversations ne sont jamais transmises à des services tiers.</p></div>
       </div>
     </div>
   </div>
@@ -730,8 +724,8 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="card-body">
       <div class="roadmap">
         <div class="rm done"><div class="rm-ph">Phase 0 ✓</div><div class="rm-title">Fondations</div><div class="rm-desc">Smart contract v5.1 compilé. Tokenomics V5 validées. Enregistrement France. Documentation complète.</div></div>
-        <div class="rm"><div class="rm-ph">Phase 1 — T2/T3 2026</div><div class="rm-title">Lancement public</div><div class="rm-desc">Déploiement mainnet. Listing Raydium. Messagerie E2EE. Orb bêta. 100 bêta-testeurs. Audit Code4rena.</div></div>
-        <div class="rm"><div class="rm-ph">Phase 2 — T4 2026</div><div class="rm-title">Migration IA privée</div><div class="rm-desc">Serveur Ollama + Llama 3 local. Programme partenaires. 500+ abonnés Orb.</div></div>
+        <div class="rm"><div class="rm-ph">Phase 1 — T2/T3 2026</div><div class="rm-title">Bêta — Messagerie & Orb</div><div class="rm-desc">Lancement bêta sans blockchain. Messagerie E2EE avec crédits internes. Orb IA sur serveur Hetzner dédié. 100 bêta-testeurs. Les revenus financent l'audit et le cadre juridique.</div></div>
+        <div class="rm"><div class="rm-ph">Phase 2 — T4 2026</div><div class="rm-title">Lancement ALCB</div><div class="rm-desc">Déploiement mainnet Solana. Listing Raydium. Conversion des crédits bêta en ALCB pour les early adopters. Audit Code4rena complété.</div></div>
         <div class="rm"><div class="rm-ph">Phase 3 — 2027</div><div class="rm-title">Expansion</div><div class="rm-desc">Application mobile. Listing exchanges majeurs. Abonnements en ALCB.</div></div>
         <div class="rm"><div class="rm-ph">Phase 4 — 2028+</div><div class="rm-title">Adoption large</div><div class="rm-desc">Gouvernance communautaire. Expansion internationale. Modèle IA propriétaire.</div></div>
       </div>
@@ -747,6 +741,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
 <div class="std-page">
   <div class="page-title">Token ALCB</div>
   <div class="page-sub">La monnaie numérique déflationnaire qui anime l'écosystème Alcorb.</div>
+  <div style="background:rgba(109,40,217,.12);border:1px solid rgba(109,40,217,.3);border-radius:10px;padding:14px 18px;margin-bottom:28px;font-size:.88rem;color:rgba(196,181,253,.85);">⚡ <strong style="color:#a78bfa">Phase 2</strong> — Le token ALCB sera activé au lancement officiel. La phase bêta fonctionne avec des crédits internes. Les early adopters verront leurs crédits convertis en ALCB au ratio de lancement.</div>
   <div class="stats">
     <div class="stat"><div class="stat-v">1 Md</div><div class="stat-l">Supply total ALCB</div></div>
     <div class="stat"><div class="stat-v">0,001€</div><div class="stat-l">Prix de lancement</div></div>
@@ -766,7 +761,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
         <tr><td>Burn à l'envoi</td><td class="td-hi">0,01% — déflationnaire doux</td></tr>
         <tr><td>Escrow non réclamés</td><td class="td-hi">90 jours — redistribution automatique</td></tr>
         <tr><td>Rate limiting</td><td class="td-hi">100 messages/heure/wallet</td></tr>
-        <tr><td>Program ID</td><td class="td-mono">D95GWUJHEp7HAbSbfmfRG5tinHiNdtnp6mxEGkqutFja</td></tr>
+        <tr><td>Program ID</td><td class="td-mono">Disponible au déploiement mainnet</td></tr>
       </table></div>
     </div>
   </div>
@@ -799,12 +794,11 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="card-body">
       <div class="time-box">
         <h4>⏱️ Comment fonctionne le temps actif ?</h4>
-        <p>Le compteur démarre quand vous appuyez sur Envoyer. Il s'arrête quand Orb finit de répondre. Entre deux messages, le temps ne s'écoule pas. 30 minutes = 1 800 secondes d'interaction réelle.</p>
+        <p>Le compteur démarre quand vous appuyez sur Envoyer et s'arrête dès qu'Orb finit de répondre. Si sa réponse dure 20 secondes, c'est exactement 20 secondes décomptées — ni plus, ni moins.</p>
       </div>
       <div class="orb-plans">
-        <div class="plan"><div class="plan-name">Essai gratuit</div><div class="plan-price">0€</div><div class="plan-per">14 jours</div><div class="plan-time">15 min/jour</div><div class="plan-secs">900 secondes</div><div class="plan-ft">Messages <strong>illimités</strong></div><div class="plan-ft">Mémoire <strong>14 jours</strong></div><div class="plan-ft">1 essai par compte</div></div>
-        <div class="plan feat"><div class="plan-badge">Recommandé</div><div class="plan-name">Standard</div><div class="plan-price">9€</div><div class="plan-per">par mois</div><div class="plan-time">30 min/jour</div><div class="plan-secs">1 800 secondes</div><div class="plan-ft">Messages <strong>illimités</strong></div><div class="plan-ft">Mémoire <strong>30 jours glissants</strong></div><div class="plan-ft">Annulation libre</div></div>
-        <div class="plan"><div class="plan-name">Premium</div><div class="plan-price">19€</div><div class="plan-per">par mois</div><div class="plan-time">60 min/jour</div><div class="plan-secs">3 600 secondes</div><div class="plan-ft">Messages <strong>illimités</strong></div><div class="plan-ft">Mémoire <strong>permanente</strong></div><div class="plan-ft">Apprentissage personnalisé</div></div>
+        <div class="plan"><div class="plan-name">Essai gratuit</div><div class="plan-price">0€</div><div class="plan-per">30 jours</div><div class="plan-time">Accès complet</div><div class="plan-secs">Mémoire permanente dès J1</div><div class="plan-ft">Messages <strong>illimités</strong></div><div class="plan-ft">Mémoire <strong>permanente</strong></div><div class="plan-ft">1 essai par compte</div></div>
+        <div class="plan feat"><div class="plan-name">Orb</div><div class="plan-price">19,90€</div><div class="plan-per">par mois</div><div class="plan-time">Accès illimité</div><div class="plan-secs">Mémoire permanente</div><div class="plan-ft">Messages <strong>illimités</strong></div><div class="plan-ft">Mémoire <strong>permanente</strong></div><div class="plan-ft">Apprentissage personnalisé</div><div class="plan-ft">Annulation libre</div></div>
       </div>
     </div>
   </div>
@@ -841,7 +835,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
   <div class="page-sub">100 places. Soyez parmi les premiers à façonner Alcorb.</div>
   <div class="beta-form">
     <div class="beta-title">🚀 Programme Bêta-testeurs</div>
-    <div class="beta-sub">Accès anticipé · 5€ en ALCB · Influence directe sur le produit</div>
+    <div class="beta-sub">Liste d'attente · 5€ en crédits offerts · Vous serez contacté personnellement</div>
     <div class="beta-row">
       <input type="email" class="inp" id="beta-email" placeholder="votre@email.com" style="max-width:320px;flex:1">
       <button class="btn-p" onclick="submitBeta()">Rejoindre →</button>
@@ -853,10 +847,9 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="card-hdr"><div class="card-ico">🎁</div><div><div class="card-title">Ce que vous obtenez</div><div class="card-sub">Limité aux 100 premiers</div></div></div>
     <div class="card-body">
       <div class="feat-grid">
-        <div class="feat"><h4>5€ en ALCB offerts</h4><p>Versés après votre période de test. Convertis via Pyth Network au moment du versement.</p></div>
+        <div class="feat"><h4>5€ en ALCB offerts</h4><p>Versés en crédits Alcorb après votre période de test. Convertis en ALCB au lancement officiel.</p></div>
         <div class="feat"><h4>Accès anticipé</h4><p>Messagerie et Orb avant le lancement public. Votre feedback façonne le produit.</p></div>
-        <div class="feat"><h4>Statut fondateur</h4><p>Badge permanent "Bêta-testeur fondateur". Reconnaissance dans l'historique du projet.</p></div>
-        <div class="feat"><h4>Canal direct</h4><p>Telegram privé avec l'équipe. Vos retours pris en compte en temps réel.</p></div>
+        <div class="feat"><h4>Tarif fondateur à vie</h4><p>Les 100 premiers bêta-testeurs bénéficient de l'abonnement Orb à 9,95€/mois au lieu de 19,90€, à vie, tant qu'ils restent abonnés.</p></div>
       </div>
     </div>
   </div>
@@ -865,11 +858,10 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="card-body">
       <div class="tbl-wrap"><table>
         <tr><th>Action</th><th>Récompense</th><th>Condition</th></tr>
-        <tr><td>Inscription Standard</td><td class="td-g">1€ en ALCB</td><td>10 000 premiers abonnés</td></tr>
-        <tr><td>Inscription Premium</td><td class="td-g">3€ en ALCB</td><td>10 000 premiers abonnés</td></tr>
-        <tr><td>Parrainage</td><td class="td-g">2€ en ALCB</td><td>Par filleul abonné payant</td></tr>
+        <tr><td>Inscription Orb</td><td class="td-g">3€ en crédits</td><td>10 000 premiers abonnés</td></tr>
+        <tr><td>Parrainage</td><td class="td-g">2€ en crédits</td><td>Par filleul abonné payant</td></tr>
       </table></div>
-      <p style="font-size:.76rem;color:var(--muted);margin-top:10px;font-style:italic">Tous les bonus sont indexés en euros et convertis en ALCB via Pyth Network. Verrouillage 30 jours.</p>
+      <p style="font-size:.76rem;color:var(--muted);margin-top:10px;font-style:italic">Tous les bonus sont exprimés en euros et versés en crédits Alcorb. Convertis en ALCB au lancement officiel. Verrouillage 30 jours.</p>
     </div>
   </div>
 </div>
@@ -1031,7 +1023,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
           <div class="card-body">
             <div class="tbl-wrap"><table>
               <tr><th>Élément</th><th>Valeur</th></tr>
-              <tr><td>Program ID</td><td class="td-mono">D95GWUJHEp7HAbSbfmfRG5tinHiNdtnp6mxEGkqutFja</td></tr>
+              <tr><td>Program ID</td><td class="td-mono">Disponible au déploiement mainnet</td></tr>
               <tr><td>Wallet fondateur</td><td class="td-mono">85GvdfBm9MAqcwx1ztgFYVhtHsKMV1tGW5yMNNuQDLbR</td></tr>
               <tr><td>Anchor version</td><td class="td-hi">0.31.0 (~/alcorb-token)</td></tr>
               <tr><td>Réseau actuel</td><td class="td-hi">Devnet → Mainnet avant lancement</td></tr>
@@ -1220,7 +1212,7 @@ function selectOrbPlan(el,plan,mins,price){
   orbSeconds=mins*60; orbRunning=false;
   clearInterval(orbInterval);
   updateOrbTimer();
-  showToast('Orb '+el.querySelector('.oplan-name').textContent+' — '+mins+' min/jour · '+price);
+  showToast('Orb '+el.querySelector('.oplan-name').textContent+' — Mémoire permanente · '+price);
 }
 function updateOrbTimer(){
   const m=Math.floor(orbSeconds/60),s=orbSeconds%60;
@@ -1248,7 +1240,7 @@ const orbReplies=[
   "Je vous entends. Pour approfondir ce point, voici ce que je sais sur le sujet : les tokenomics d'Alcorb sont conçues pour créer de la valeur à chaque interaction, pas seulement pour les spéculateurs.",
   "Bonne question. La confidentialité d'Alcorb repose sur un principe simple : ce qui n'existe pas sur nos serveurs ne peut pas être volé. Le chiffrement E2EE n'est pas une option — c'est l'architecture de base.",
   "Je comprends votre préoccupation. Le mécanisme d'escrow 90 jours protège à la fois l'expéditeur et le destinataire. Aucun token ne disparaît — ils circulent toujours dans l'écosystème.",
-  "Exactement. C'est l'avantage du temps actif par rapport aux quotas en messages. 30 minutes = 1 800 secondes d'interaction réelle avec Orb. Pas de surprise, pas de consommation cachée.",
+  "Exactement. C'est l'avantage du temps actif : vous ne payez que le temps réel d'interaction. Pas de surprise, pas de consommation cachée.",
   "Je surveille ce point. D'après les données actuelles du marché, SOL se situe autour de 130€. Cela signifie que la liquidité initiale nécessite environ 130 000 ALCB pour 1 SOL — le ratio 50/50 est maintenu.",
 ];
 let orbReplyIdx=0;
@@ -1290,16 +1282,16 @@ function animateToko(){document.querySelectorAll('.toko-b').forEach(b=>{b.style.
 
 // ── FAQ ──
 const faqD=[
-  {q:"C'est quoi Alcorb en une phrase ?",a:"ALCB est une monnaie numérique qui intègre sa propre messagerie chiffrée et un assistant IA — conçu pour que vos données restent exclusivement les vôtres."},
-  {q:"Ai-je besoin d'un wallet crypto ?",a:"Non. C'est l'une des innovations fondamentales d'Alcorb. Une clé éphémère est créée dans votre navigateur, utilisée, puis détruite. Votre destinataire n'a besoin que d'une adresse email."},
+  {q:"C'est quoi Alcorb en une phrase ?",a:"Alcorb est un écosystème numérique souverain : messagerie chiffrée de bout en bout, assistant IA privé, et un token utilitaire (ALCB) — conçu pour que votre parole et vos données restent exclusivement les vôtres."},
+  {q:"Ai-je besoin d'un wallet crypto ?",a:"Non. Alcorb fonctionne sans wallet crypto. Le chiffrement est géré automatiquement dans votre navigateur — une clé éphémère est créée, utilisée, puis détruite. Votre destinataire n'a besoin que d'une adresse email."},
   {q:"Comment fonctionne le chiffrement des messages ?",a:"Vos messages sont chiffrés dans votre navigateur avec AES-256-GCM avant d'être transmis. Alcorb ne possède pas les clés — même en cas de piratage de nos serveurs, vos messages restent illisibles."},
-  {q:"Qu'est-ce que le temps actif Orb ?",a:"Le compteur démarre quand vous appuyez sur Envoyer et s'arrête quand Orb finit de répondre. Entre deux messages, le temps ne s'écoule pas. 30 minutes = 1 800 secondes d'interaction réelle."},
-  {q:"Mes données Orb sont-elles confidentielles ?",a:"Oui. Dès 500 abonnés, Orb migre sur un serveur privé Alcorb. Vos données ne quittent jamais ce serveur. Votre IA, vos données, personne d'autre."},
-  {q:"Comment fonctionnent les tokens non réclamés ?",a:"Les ALCB non réclamés après 90 jours sont redistribués automatiquement : 50% cashback utilisateurs, 20% partenaires, 30% trésorerie. Aucun token ne disparaît."},
+  {q:"Qu'est-ce que le temps actif Orb ?",a:"Le compteur démarre quand vous appuyez sur Envoyer et s'arrête dès qu'Orb finit de répondre. Si sa réponse dure 20 secondes, c'est exactement 20 secondes décomptées — ni plus, ni moins."},
+  {q:"Mes données Orb sont-elles confidentielles ?",a:"Oui. Orb tourne sur un serveur privé Alcorb dès le lancement. Vos conversations ne sont jamais transmises à des services tiers. Votre IA, vos données, personne d'autre."},
+  {q:"Qu'est-ce que les crédits Alcorb ?",a:"Pendant la phase bêta, les échanges fonctionnent avec des crédits internes Alcorb — pas de blockchain, pas de wallet requis. Au lancement officiel, les crédits bêta seront convertis en ALCB pour les early adopters."},
   {q:"Le fondateur peut-il vendre ses tokens ?",a:"Limité. 70M ALCB verrouillés 6 mois (cliff), puis 14 tranches sur 4 ans. Maximum 50 000 ALCB/jour. Inscrit on-chain et vérifiable publiquement."},
-  {q:"Y a-t-il des publicités sur Alcorb ?",a:"Jamais. Le modèle économique repose uniquement sur les abonnements Orb et les transactions ALCB. Vos données ne sont jamais vendues."},
+  {q:"Y a-t-il des publicités sur Alcorb ?",a:"Jamais. Le modèle économique repose uniquement sur les abonnements Orb. Vos données ne sont jamais vendues ni utilisées à des fins publicitaires."},
   {q:"Alcorb est-il légal en France ?",a:"Oui. Enregistré en France, soumis au RGPD et au règlement MiCA européen. Consultation juridique prévue avant le lancement mainnet."},
-  {q:"Comment acheter des ALCB ?",a:"Au lancement, disponibles sur Raydium (DEX Solana) et directement via alcorb.app en euros — conversion automatique en coulisse. Aucun wallet requis."},
+  {q:"Quand sera disponible le token ALCB ?",a:"ALCB sera lancé lors de la phase officielle, après la période bêta. Les utilisateurs bêta verront leurs crédits convertis en ALCB au ratio de lancement. La date sera communiquée aux abonnés en priorité."},
 ];
 function buildFAQ(){
   const c=document.getElementById('faq-wrap'); if(!c) return;
