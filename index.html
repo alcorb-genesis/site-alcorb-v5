@@ -600,30 +600,30 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
             placeholder="Écrivez votre message... Il sera chiffré avant envoi. Personne ne peut le lire."></textarea>
           <div class="charcount"><span id="m-cc">0</span> / 2000</div>
           <div class="prices" id="m-prices">
-            <div class="price sel" onclick="pickPrice(this,.10,100)">
-              <div class="p-eur">0,10€</div><div class="p-alcb">100 crédits</div><div class="p-desc">Bref</div>
+            <div class="price sel" onclick="pickPrice(this,.02,100)">
+              <div class="p-eur">0,02€</div><div class="p-alcb">100 crédits</div><div class="p-desc">Bref</div>
             </div>
-            <div class="price" onclick="pickPrice(this,.50,500)">
+            <div class="price" onclick="pickPrice(this,.10,500)">
               <span class="p-pop">★</span>
-              <div class="p-eur">0,50€</div><div class="p-alcb">500 crédits</div><div class="p-desc">Standard</div>
+              <div class="p-eur">0,10€</div><div class="p-alcb">500 crédits</div><div class="p-desc">Standard</div>
             </div>
-            <div class="price" onclick="pickPrice(this,1,1000)">
-              <div class="p-eur">1,00€</div><div class="p-alcb">1 000 crédits</div><div class="p-desc">Long</div>
+            <div class="price" onclick="pickPrice(this,.20,1000)">
+              <div class="p-eur">0,20€</div><div class="p-alcb">1 000 crédits</div><div class="p-desc">Long</div>
             </div>
-            <div class="price" onclick="pickPrice(this,5,5000)">
-              <div class="p-eur">5,00€</div><div class="p-alcb">5 000 crédits</div><div class="p-desc">Fichier</div>
+            <div class="price" onclick="pickPrice(this,1,5000)">
+              <div class="p-eur">1,00€</div><div class="p-alcb">5 000 crédits</div><div class="p-desc">Fichier (max 25MB)</div>
             </div>
           </div>
           <div class="fees">
-            <div class="fee"><span class="fl">Montant</span><span class="fv" id="f-amt">0,10 €</span></div>
+            <div class="fee"><span class="fl">Montant</span><span class="fv" id="f-amt">0,02 €</span></div>
             <div class="fee"><span class="fl">Frais carte (~1,5%)</span><span class="fv">−<span id="f-fee">0,0015</span> €</span></div>
-            <div class="fee"><span class="fl">Crédits reçus</span><span class="fv hi" id="f-alcb">~98,5 crédits</span></div>
+            <div class="fee"><span class="fl">Crédits reçus</span><span class="fv hi" id="f-alcb">~98 crédits</span></div>
             <div class="fee"><span class="fl">Frais de service (0,01%)</span><span class="fv brn" id="f-burn">−0,010 crédits</span></div>
             <div class="fee"><span class="fl">Livré au destinataire</span><span class="fv hi" id="f-net">~98,49 crédits</span></div>
             <div class="fee-total"><span class="ftl">Coût total</span><span class="ftv" id="f-total">0,10 € tout compris</span></div>
           </div>
           <button class="btn-pay" onclick="sendMsg()">
-            <div class="btn-inner"><span>🔐 Chiffrer &amp; Envoyer</span><span class="btn-amt" id="m-btn-amt">0,10 €</span></div>
+            <div class="btn-inner"><span>🔐 Chiffrer &amp; Envoyer</span><span class="btn-amt" id="m-btn-amt">0,02 €</span></div>
           </button>
           <div class="sec-tags">
             <span class="stag">✓ AES-256-GCM</span><span class="stag">✓ Clé éphémère</span>
@@ -650,6 +650,11 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
               <div class="oplan-name">Essai</div>
               <div class="oplan-time">30 jours</div>
               <div class="oplan-price">Gratuit</div>
+            </div>
+            <div class="oplan" onclick="selectOrbPlan(this,'day',60,'1€')">
+              <div class="oplan-name">1 jour</div>
+              <div class="oplan-time">À la journée</div>
+              <div class="oplan-price">1€/jour</div>
             </div>
             <div class="oplan" onclick="selectOrbPlan(this,'orb',60,'19,90€')">
               <div class="oplan-name">Orb</div>
@@ -704,6 +709,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
       <div class="feat-grid">
         <div class="feat"><h4>AES-256-GCM</h4><p>Chiffrement militaire. Clé éphémère X25519 détruite après chaque message. Forward secrecy garanti.</p></div>
         <div class="feat"><h4>Accès par email</h4><p>Aucun compte crypto requis. Votre destinataire reçoit un lien par email pour lire son message.</p></div>
+        <div class="feat"><h4>Accessible à tous</h4><p>Dès 0,02€ le message. 3 messages brefs gratuits par jour pour tout compte enregistré. Parce que la liberté de communiquer ne devrait pas avoir de prix.</p></div>
         <div class="feat"><h4>IPFS décentralisé</h4><p>Vos messages stockés de façon décentralisée. Aucun serveur central. Incensurable.</p></div>
         
       </div>
@@ -793,12 +799,20 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="card-hdr"><div class="card-ico">🤖</div><div><div class="card-title">Abonnements Orb</div><div class="card-sub">Temps actif honnête — pas de quota en messages trompeur</div></div></div>
     <div class="card-body">
       <div class="time-box">
+        <h4>💳 Portefeuille messagerie</h4>
+        <p>Pour les messages longs, standards et fichiers — rechargez votre portefeuille à partir de 2€, sans maximum. Votre solde est débité exactement selon la valeur de chaque message envoyé.</p>
+        <h4>💡 Comment choisir votre formule ?</h4>
+        <p>L'essai gratuit dure 30 jours avec accès complet. Ensuite, utilisez Orb à la journée (1€/jour) selon vos besoins, ou abonnez-vous pour un accès continu. À partir de 20 jours par mois, l'abonnement mensuel devient plus avantageux. L'annuel offre 2 mois gratuits. Toutes les formules donnent accès aux mêmes fonctionnalités — sans limitation artificielle.</p>
         <h4>⏱️ Comment fonctionne le temps actif ?</h4>
         <p>Le compteur démarre quand vous appuyez sur Envoyer et s'arrête dès qu'Orb finit de répondre. Si sa réponse dure 20 secondes, c'est exactement 20 secondes décomptées — ni plus, ni moins.</p>
       </div>
       <div class="orb-plans">
         <div class="plan"><div class="plan-name">Essai gratuit</div><div class="plan-price">0€</div><div class="plan-per">30 jours</div><div class="plan-time">Accès complet</div><div class="plan-secs">Mémoire permanente dès J1</div><div class="plan-ft">Messages <strong>illimités</strong></div><div class="plan-ft">Mémoire <strong>permanente</strong></div><div class="plan-ft">1 essai par compte</div></div>
+        <div class="plan"><div class="plan-name">À la journée</div><div class="plan-price">1€</div><div class="plan-per">par jour</div><div class="plan-time">Accès complet</div><div class="plan-secs">Activé à la demande</div><div class="plan-ft">Mémoire <strong>permanente</strong></div><div class="plan-ft">Toutes les fonctionnalités</div><div class="plan-ft">Sans engagement</div></div>
         <div class="plan feat"><div class="plan-name">Orb</div><div class="plan-price">19,90€</div><div class="plan-per">par mois</div><div class="plan-time">Accès illimité</div><div class="plan-secs">Mémoire permanente</div><div class="plan-ft">Messages <strong>illimités</strong></div><div class="plan-ft">Mémoire <strong>permanente</strong></div><div class="plan-ft">Apprentissage personnalisé</div><div class="plan-ft">Annulation libre</div></div>
+        <div class="plan"><div class="plan-name">Messagerie</div><div class="plan-price">9,90€</div><div class="plan-per">par mois</div><div class="plan-time">Messages brefs illimités</div><div class="plan-secs">280 caractères max</div><div class="plan-ft">Messages longs et fichiers via portefeuille</div><div class="plan-ft">Indépendant d'Orb</div><div class="plan-ft">Annulation libre</div></div>
+        <div class="plan"><div class="plan-badge" style="background:#d97706">Meilleure valeur</div><div class="plan-name">Bundle Alcorb</div><div class="plan-price">26,90€</div><div class="plan-per">par mois</div><div class="plan-time">Orb + Messagerie</div><div class="plan-secs">Économie de 2,90€/mois</div><div class="plan-ft">Orb <strong>illimité</strong></div><div class="plan-ft">Messages brefs <strong>illimités</strong></div><div class="plan-ft">Mémoire permanente</div></div>
+        <div class="plan"><div class="plan-name">Orb Annuel</div><div class="plan-price">199€</div><div class="plan-per">par an</div><div class="plan-time">2 mois offerts</div><div class="plan-secs">Soit 16,58€/mois</div><div class="plan-ft">Mémoire <strong>permanente</strong></div><div class="plan-ft">Toutes les fonctionnalités</div><div class="plan-ft">Renouvellement automatique</div></div>
       </div>
     </div>
   </div>
@@ -850,6 +864,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
         <div class="feat"><h4>5€ en ALCB offerts</h4><p>Versés en crédits Alcorb après votre période de test. Convertis en ALCB au lancement officiel.</p></div>
         <div class="feat"><h4>Accès anticipé</h4><p>Messagerie et Orb avant le lancement public. Votre feedback façonne le produit.</p></div>
         <div class="feat"><h4>Tarif fondateur à vie</h4><p>Les 100 premiers bêta-testeurs bénéficient de l'abonnement Orb à 9,95€/mois au lieu de 19,90€, à vie, tant qu'ils restent abonnés.</p></div>
+        <div class="feat"><h4>Programme des Éclaireurs</h4><p>À l'issue du mois bêta gratuit, devenez Éclaireur Alcorb — partagez votre lien personnel et percevez 25% de commission mensuelle sur chaque abonnement actif généré.</p></div>
       </div>
     </div>
   </div>
@@ -870,6 +885,40 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
 <!-- ═══════════════════════════════════
      ADMIN CORBY
 ═══════════════════════════════════ -->
+<section id="pg-legal" class="page">
+  <div style="max-width:700px;margin:0 auto;padding:40px 20px">
+    <div style="font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold);text-align:center;margin-bottom:8px">Fondements Juridiques</div>
+    <div style="text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:40px">Transparence légale et protection de vos droits</div>
+
+    <div style="margin-bottom:32px">
+      <h3 style="color:var(--accent);font-family:'Cinzel',serif;margin-bottom:12px">Le droit à la correspondance privée</h3>
+      <p style="color:var(--fg);line-height:1.7">En France et en Europe, le secret des correspondances est un droit fondamental protégé par l'article 8 de la Convention européenne des droits de l'Homme, l'article 9 du Code civil, et la loi du 10 juillet 1991 sur le secret des correspondances électroniques. Alcorb est conçu pour respecter ces droits dans leur intégralité.</p>
+    </div>
+
+    <div style="margin-bottom:32px">
+      <h3 style="color:var(--accent);font-family:'Cinzel',serif;margin-bottom:12px">Ce qu'Alcorb peut et ne peut pas faire</h3>
+      <p style="color:var(--fg);line-height:1.7">Le chiffrement de bout en bout (E2EE) d'Alcorb est opéré intégralement dans votre navigateur. Aucune clé de déchiffrement n'existe sur nos serveurs. En cas de réquisition judiciaire, Alcorb ne peut fournir que ce qu'il possède — des données chiffrées illisibles sans votre clé personnelle.</p>
+      <p style="color:var(--gold);font-weight:600;margin-top:8px">Ce n'est pas une politique. C'est une réalité technique.</p>
+    </div>
+
+    <div style="margin-bottom:32px">
+      <h3 style="color:var(--accent);font-family:'Cinzel',serif;margin-bottom:12px">Jurisprudence européenne</h3>
+      <p style="color:var(--fg);line-height:1.7">Dans l'arrêt <strong>Podchasov v. Russia</strong> (CEDH, 13 février 2024), la Cour européenne des droits de l'Homme a jugé à l'unanimité que les obligations forçant les services E2EE à déchiffrer les communications constituent une ingérence disproportionnée dans le droit à la vie privée. Cet arrêt est contraignant pour tous les États membres de l'Union européenne, dont la France.</p>
+    </div>
+
+    <div style="margin-bottom:32px">
+      <h3 style="color:var(--accent);font-family:'Cinzel',serif;margin-bottom:12px">Réglementation CSAR</h3>
+      <p style="color:var(--fg);line-height:1.7">Aucune obligation légale de scanning généralisé des communications n'est en vigueur pour les services E2EE véritables en Europe à ce jour. La dérogation temporaire à la directive ePrivacy a expiré en avril 2026.</p>
+    </div>
+
+    <div style="background:rgba(109,40,217,.08);border:1px solid rgba(109,40,217,.3);border-radius:12px;padding:20px 24px">
+      <h3 style="color:var(--gold);font-family:'Cinzel',serif;margin-bottom:8px">🕯️ Warrant Canary</h3>
+      <p style="color:var(--fg);font-size:1rem">Alcorb n'a reçu aucune réquisition judiciaire à ce jour.</p>
+      <p style="color:var(--muted);font-size:.75rem;margin-top:4px">Dernière mise à jour : Mai 2026</p>
+    </div>
+  </div>
+</section>
+
 <section id="pg-admin" class="page">
 
   <!-- LOGIN -->
@@ -1106,6 +1155,8 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     © 2026 Alcorb · Auto-entrepreneur enregistré en France · 200 rue Croix Nivert, 75015 Paris ·
     Les tokens ALCB sont des utility tokens. Ceci ne constitue pas un conseil en investissement.
   </div>
+
+  <div style="font-size:.75rem;color:var(--muted);text-align:center;width:100%"><a href="#" onclick="showPage('legal');return false;" style="color:var(--muted)">Fondements juridiques</a> · <a href="#" onclick="showPage('legal');return false;" style="color:var(--muted)">Warrant Canary</a></div>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -1119,7 +1170,7 @@ document.querySelectorAll('img[src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAA
 
 // ── NAVIGATION ──
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page, section.page').forEach(p => p.classList.remove('active'));
   const pg = document.getElementById('pg-'+id);
   if(pg) { pg.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
   if(id==='token') setTimeout(animateToko,200);
@@ -1157,9 +1208,9 @@ function pickPrice(el,e,a) {
   const fee=+(e*.015).toFixed(4), net=+(a*.985).toFixed(2), burn=+(net*.0001).toFixed(4), msg=+(net-burn).toFixed(4);
   document.getElementById('f-amt').innerHTML=fmt(e);
   document.getElementById('f-fee').textContent=fee.toFixed(4);
-  document.getElementById('f-alcb').textContent='~'+net+' ALCB';
-  document.getElementById('f-burn').textContent='−'+burn+' ALCB';
-  document.getElementById('f-net').textContent='~'+msg+' ALCB';
+  document.getElementById('f-alcb').textContent='~'+net+' crédits';
+  document.getElementById('f-burn').textContent='−'+burn+' crédits';
+  document.getElementById('f-net').textContent='~'+msg+' crédits';
   document.getElementById('f-total').innerHTML=fmt(e)+' tout compris';
   document.getElementById('m-btn-amt').innerHTML=fmt(e);
 }
@@ -1182,7 +1233,7 @@ function startPayment(){
     {p:28,l:'Chiffrement AES-256-GCM du message...'},
     {p:44,l:'Clé éphémère détruite ✓'},
     {p:58,l:'Conversion EUR → ALCB en cours...'},
-    {p:72,l:'ALCB reçus sur wallet relais...'},
+    {p:72,l:'Crédits calculés...'},
     {p:84,l:'Upload payload chiffré sur IPFS...'},
     {p:94,l:'Transaction Solana — burn 0,01%...'},
     {p:100,l:'Confirmation blockchain ✓'},
@@ -1292,6 +1343,7 @@ const faqD=[
   {q:"Y a-t-il des publicités sur Alcorb ?",a:"Jamais. Le modèle économique repose uniquement sur les abonnements Orb. Vos données ne sont jamais vendues ni utilisées à des fins publicitaires."},
   {q:"Alcorb est-il légal en France ?",a:"Oui. Enregistré en France, soumis au RGPD et au règlement MiCA européen. Consultation juridique prévue avant le lancement mainnet."},
   {q:"Quand sera disponible le token ALCB ?",a:"ALCB sera lancé lors de la phase officielle, après la période bêta. Les utilisateurs bêta verront leurs crédits convertis en ALCB au ratio de lancement. La date sera communiquée aux abonnés en priorité."},
+  {q:"Combien coûte un message ?",a:"Dès 0,02€ pour un message bref (280 caractères). 0,10€ pour un message standard. 0,20€ pour un message long. 1€ pour un message avec fichier (max 25MB). 3 messages brefs gratuits par jour pour tout compte enregistré. Abonnement messagerie illimité (brefs) à 9,90€/mois."},
 ];
 function buildFAQ(){
   const c=document.getElementById('faq-wrap'); if(!c) return;
