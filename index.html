@@ -553,7 +553,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
   <!-- LEFT -->
   <div class="hero-left">
     <div class="eyebrow">⚡ Solana · E2EE · Orb IA · Token ALCB</div>
-    <h1 class="hero-h1">La monnaie numérique<br>qui libère votre parole</h1>
+    <h1 class="hero-h1">L'écosystème numérique<br>qui libère votre parole</h1>
     <p class="hero-pitch">
       Le monde a besoin de deux choses que les plateformes actuelles ne donnent pas vraiment :
       une parole libre et protégée, et une IA qui vous appartient vraiment.<br>
@@ -566,7 +566,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="badges">
       <div class="badge"><span class="bdot"></span>Chiffrement E2EE dans votre navigateur</div>
       <div class="badge"><span class="bdot"></span>Sans wallet requis — paiement par carte</div>
-      <div class="badge"><span class="bdot"></span>IA privée — vos données, personne d'autre</div>
+      <div class="badge"><span class="bdot"></span>IA privée, messagerie privée — vos données, personne d'autre</div>
       <div class="badge"><span class="bdot"></span>Blockchain Solana · moins d'1 seconde</div>
       <div class="badge"><span class="bdot"></span>Projet français enregistré · RGPD</div>
     </div>
@@ -590,6 +590,38 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
           </div>
         </div>
         <div class="pb">
+          <!-- Plan selector -->
+          <div class="orb-plan-select">
+            <div class="oplan sel" onclick="selectOrbPlan(this,'free',30,'0€')">
+              <div class="oplan-name">Basic</div>
+              <div class="oplan-time">3 brefs/jour</div>
+              <div class="oplan-price">Gratuit</div>
+            </div>
+            <div class="oplan" onclick="selectMsgPlan(this,'day',60,'1€')">
+              <div class="oplan-name">Rechargement</div>
+              <div class="oplan-time">Tout types de formats</div>
+              <div class="oplan-price">2€min-sans limite max</div>
+            </div>
+            <div class="oplan" onclick="selectMsgPlan(this,'orb',60,'19,90€')">
+              <div class="oplan-name">Messagerie</div>
+              <div class="oplan-time">Format brefs illimité</div>
+              <div class="oplan-price">9,90€/mois</div>
+            </div>
+          </div>
+           <div style="margin:10px 0 12px;display:flex;flex-direction:column;gap:7px">
+            <div style="font-size:.72rem;color:var(--muted);font-style:italic;margin-bottom:2px">Formules d'abonnement :</div>
+            <div style="display:flex;gap:7px;flex-wrap:wrap">
+              <div style="flex:1;min-width:130px;background:rgba(109,40,217,.08);border:1px solid rgba(109,40,217,.2);border-radius:9px;padding:9px 11px">
+                <div style="font-size:.68rem;color:var(--glow);font-weight:700">MESSAGERIE</div>
+                <div style="font-size:.98rem;font-weight:700;color:var(--white)">9,90€<span style="font-size:.62rem;color:var(--muted)">/mois</span></div>
+                <div style="font-size:.62rem;color:var(--muted);line-height:1.4">Messages brefs illimité</div>
+              </div>
+              <div style="flex:1;min-width:130px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.25);border-radius:9px;padding:9px 11px">
+                <div style="font-size:.68rem;color:#fbbf24;font-weight:700">BUNDLE ⚡</div>
+                <div style="font-size:.98rem;font-weight:700;color:var(--white)">26,90€<span style="font-size:.62rem;color:var(--muted)">/mois</span></div>
+                <div style="font-size:.62rem;color:var(--muted);line-height:1.4"> Messages brefs illimités + Orb premium </div>
+              </div>
+            </div>
           <div style="display:flex;gap:7px;margin-bottom:10px">
             <button class="tab on" style="border-radius:8px;font-size:.63rem;padding:7px 12px" onclick="setMsgMode('card',this)">💳 Par carte</button>
             <button class="tab" style="display:none" onclick="setMsgMode('wallet',this)">🔑 Wallet</button>
@@ -609,26 +641,24 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
           <div class="charcount"><span id="m-cc">0</span> / 2000</div>
           <div class="prices" id="m-prices">
             <div class="price sel" onclick="pickPrice(this,.02,100)">
-              <div class="p-eur">0,02€</div><div class="p-alcb">2 crédits</div><div class="p-desc">Bref</div>
+              <div class="p-eur">0,02€</div><div class="p-alcb"> </div><div class="p-desc">Bref</div>
             </div>
             <div class="price" onclick="pickPrice(this,.10,500)">
               <span class="p-pop">★</span>
-              <div class="p-eur">0,10€</div><div class="p-alcb">10 crédits</div><div class="p-desc">Standard</div>
+              <div class="p-eur">0,10€</div><div class="p-alcb"> </div><div class="p-desc">Standard</div>
             </div>
             <div class="price" onclick="pickPrice(this,.20,1000)">
-              <div class="p-eur">0,20€</div><div class="p-alcb">20 crédits</div><div class="p-desc">Long</div>
+              <div class="p-eur">0,20€</div><div class="p-alcb"> </div><div class="p-desc">Long</div>
             </div>
             <div class="price" onclick="pickPrice(this,1,5000)">
-              <div class="p-eur">1,00€</div><div class="p-alcb">100 crédits</div><div class="p-desc">Fichier (max 25MB)</div>
+              <div class="p-eur">1,00€</div><div class="p-alcb"> </div><div class="p-desc">Fichier (max 25MB)</div>
             </div>
           </div>
           <div class="fees">
             <div class="fee"><span class="fl">Montant</span><span class="fv" id="f-amt">0,02 €</span></div>
             <div class="fee"><span class="fl">Frais réseau (1,5%)</span><span class="fv" id="f-fee">0,000</span></div>
-            <div class="fee"><span class="fl">Crédits reçus</span><span class="fv hi" id="f-alcb">~1,97 crédits</span></div>
             <div class="fee"><span class="fl">Frais de service (0,01%)</span><span class="fv brn" id="f-burn">−0,010 crédits</span></div>
-            <div class="fee"><span class="fl">Livré au destinataire</span><span class="fv hi" id="f-net">~98,49 crédits</span></div>
-            <div class="fee-total"><span class="ftl">Coût total</span><span class="ftv" id="f-total">0,10 € tout compris</span></div>
+            <div class="fee-total"><span class="ftl">Coût total</span><span class="ftv" id="f-total">0,02 € tout compris</span></div>
           </div>
           <button class="btn-pay" onclick="sendMsg()">
             <div class="btn-inner"><span>🔐 Chiffrer &amp; Envoyer</span><span class="btn-amt" id="m-btn-amt">0,02 €</span></div>
@@ -636,9 +666,6 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
           <div class="sec-tags">
             <span class="stag">✓ AES-256-GCM</span><span class="stag">✓ Clé éphémère</span>
             <span class="stag">✓ IPFS</span>
-          </div>
-          <div style="margin-top:16px;padding:12px 16px;background:rgba(109,40,217,.1);border:1px solid rgba(109,40,217,.25);border-radius:8px;font-size:.8rem;color:var(--muted)">
-            💳 <strong style="color:var(--glow)">Recharger mon portefeuille</strong> — À partir de <strong>2€</strong>, sans montant maximum. Chaque euro crédite 100 points. Valable pour messages longs, standards et fichiers joints. <a href="#" onclick="showPage('tarifs')" style="color:var(--glow);text-decoration:underline">Voir les formules d'abonnement →</a>
           </div>
         </div>
       </div>
@@ -673,7 +700,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
               <div class="oplan-price">19,90€/mois</div>
             </div>
           </div>
-          <div style="margin:10px 0 12px;display:flex;flex-direction:column;gap:7px">
+           <div style="margin:10px 0 12px;display:flex;flex-direction:column;gap:7px">
             <div style="font-size:.72rem;color:var(--muted);font-style:italic;margin-bottom:2px">Formules d'abonnement :</div>
             <div style="display:flex;gap:7px;flex-wrap:wrap">
               <div style="flex:1;min-width:130px;background:rgba(109,40,217,.08);border:1px solid rgba(109,40,217,.2);border-radius:9px;padding:9px 11px">
@@ -763,7 +790,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
         <div class="rm"><div class="rm-ph">Phase 1 — T2/T3 2026</div><div class="rm-title">Bêta — Messagerie & Orb</div><div class="rm-desc">Lancement bêta sans blockchain. Messagerie E2EE avec crédits internes. Orb IA sur serveur Hetzner dédié. 100 bêta-testeurs. Les revenus financent l'audit et le cadre juridique.</div></div>
         <div class="rm"><div class="rm-ph">Phase 2 — T4 2026</div><div class="rm-title">Lancement ALCB</div><div class="rm-desc">Déploiement mainnet Solana. Listing Raydium. Conversion des crédits bêta en ALCB pour les early adopters. Audit Code4rena complété.</div></div>
         <div class="rm"><div class="rm-ph">Phase 3 — 2027</div><div class="rm-title">Expansion</div><div class="rm-desc">Application mobile. Listing exchanges majeurs. Abonnements en ALCB.</div></div>
-        <div class="rm"><div class="rm-ph">Phase 4 — 2028+</div><div class="rm-title">Adoption large</div><div class="rm-desc">Gouvernance communautaire. Expansion internationale. Modèle IA propriétaire.</div></div>
+        <div class="rm"><div class="rm-ph">Phase 4 — 2028+</div><div class="rm-title">Adoption large</div><div class="rm-desc"> Expansion internationale. Modèle IA propriétaire.</div></div>
       </div>
     </div>
   </div>
@@ -880,8 +907,8 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
   <div class="page-title">Rejoindre la bêta</div>
   <div class="page-sub">100 places. Soyez parmi les premiers à façonner Alcorb.</div>
   <div class="beta-form">
-    <div class="beta-title">🚀 Programme Bêta-testeurs</div>
-    <div class="beta-sub">Liste d'attente · 5€ en crédits offerts · Vous serez contacté personnellement</div>
+    <div class="beta-title">🚀 Programme Eclaireurs</div>
+    <div class="beta-sub">Liste d'attente · 5€ en crédits offerts· Vous serez contacté personnellement</div>
     <div class="beta-row">
       <input type="email" class="inp" id="beta-email" placeholder="votre@email.com" style="max-width:320px;flex:1">
       <button class="btn-p" onclick="submitBeta()">Rejoindre →</button>
@@ -896,7 +923,7 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
         <div class="feat"><h4>5€ en crédits offerts</h4><p>Versés en crédits Alcorb après votre période de test. Convertis en ALCB au lancement officiel.</p></div>
         <div class="feat"><h4>Accès anticipé</h4><p>Messagerie et Orb avant le lancement public. Votre feedback façonne le produit.</p></div>
         <div class="feat"><h4>Tarif Éclaireur à vie — 9,95€/mois</h4><p>Réservé aux 100 premiers bêta-testeurs. Accès Orb complet à vie à ce tarif, tant que l'abonnement est actif.</p></div>
-        <div class="feat"><h4>Accès Éclaireur dédié</h4><p>Les Éclaireurs Alcorb ont un accès dédié. Demandez à Orb : <em>"Je suis un Éclaireur"</em> pour accéder à votre espace.</p></div>
+        <div class="feat"><h4>Accès Éclaireur dédié</h4><p>Les Éclaireurs Alcorb ont un accès dédié. Demandez à Orb : <em>"Je suis un Éclaireur + [code] "</em> pour accéder à votre espace.</p></div>
       </div>
     </div>
   </div>
@@ -906,10 +933,10 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
       <div class="tbl-wrap"><table>
         <tr><th>Avantage</th><th>Détail</th></tr>
         <tr><td>Commission mensuelle</td><td class="td-g">4,97€/mois par abonné parrainé</td></tr>
-        <tr><td>Bonus Phase 2 (lancement ALCB)</td><td class="td-g">5 000 ALCB par abonné parrainé</td></tr>
+        <tr><td>Bonus Phase 2 (lancement ALCB)</td><td class="td-g">5 000 ALCB une fois, au lancement crypto</td></tr>
         <tr><td>Token membre unique</td><td class="td-g">1 NFT Éclaireur (non-fongible, unique)</td></tr>
       </table></div>
-      <p style="font-size:.76rem;color:rgba(251,191,36,.8);margin-top:10px;font-style:italic">Les commissions de 4,97€/mois sont versées en euros tant que l'abonné reste actif. Les 5 000 ALCB sont attribués au lancement officiel de la blockchain (Phase 2). Le token NFT Éclaireur est unique et non-reproductible.</p>
+      <p style="font-size:.76rem;color:rgba(251,191,36,.8);margin-top:10px;font-style:italic">Les commissions de 4,97€/mois sont versées en euros, avant le 15 du mois suivant tant que l'abonné reste actif. Les 5 000 ALCB sont attribués au lancement officiel de la blockchain (Phase 2). Le token NFT Éclaireur est unique et non-reproductible.</p>
     </div>
   </div>
   <div class="card">
@@ -917,9 +944,9 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
     <div class="card-body">
       <div class="tbl-wrap"><table>
         <tr><th>Action</th><th>Récompense</th></tr>
-        <tr><td>Abonnement souscrit via votre code</td><td class="td-g">1 token membre unique (NFT)</td></tr>
+        <tr><td>Abonnement souscrit via votre code</td><td class="td-g">2€ crédité par filleul dans votre porte-feuille * (NFT)</td></tr>
       </table></div>
-      <p style="font-size:.76rem;color:var(--muted);margin-top:10px;font-style:italic">Chaque abonné parrainé vous rapporte un token unique et non-fongible, gravé sur la blockchain. Ce token atteste de votre rôle dans la construction d'Alcorb.</p>
+      <p style="font-size:.76rem;color:var(--muted);margin-top:10px;font-style:italic">* Utilisable pour le service messagerie et/ou réduction abonnement. Déblocable à partir de 10€</p>
     </div>
   </div>
 </div>
@@ -1132,8 +1159,8 @@ tr:hover td{background:rgba(109,40,217,.04);color:var(--white)}
         <div class="admin-panel-sub">Obligations légales · Échéances · Statut</div>
         <div class="tbl-wrap"><table>
           <tr><th>Obligation</th><th>Statut</th><th>Échéance</th></tr>
-          <tr><td>SIRET auto-entrepreneur</td><td style="color:#fbbf24">⏳ En attente TCO Paris</td><td>Imminent</td></tr>
-          <tr><td>Marque INPI "Alcorb"</td><td style="color:#fbbf24">⏳ Après SIRET (270€)</td><td>Dès SIRET reçu</td></tr>
+          <tr><td>SIRET auto-entrepreneur</td><td style="color:#fbbf24">⏳ TCO Paris</td><td>Validé</td></tr>
+          <tr><td>Marque INPI "Alcorb"</td><td style="color:#fbbf24">⏳ INPI (270€)</td><td>Validé</td></tr>
           <tr><td>Notification White Paper AMF</td><td style="color:var(--muted)">⏳ Avant mainnet</td><td>J-20 avant listing</td></tr>
           <tr><td>Consultation avocat crypto</td><td style="color:var(--muted)">⏳ À planifier</td><td>Avant mainnet</td></tr>
           <tr><td>CGU droit rétractation 14j</td><td style="color:var(--muted)">⏳ À vérifier</td><td>Avant lancement</td></tr>
@@ -1252,9 +1279,9 @@ function pickPrice(el,e,a) {
   const fee=+(e*.015).toFixed(4), net=+(a*.985).toFixed(2), burn=+(net*.0001).toFixed(4), msg=+(net-burn).toFixed(4);
   document.getElementById('f-amt').innerHTML=fmt(e);
   document.getElementById('f-fee').textContent=fee.toFixed(4);
-  document.getElementById('f-alcb').textContent='~'+net+' crédits';
-  document.getElementById('f-burn').textContent='−'+burn+' crédits';
-  document.getElementById('f-net').textContent='~'+msg+' crédits';
+  document.getElementById('f-alcb').textContent='~'+net+' €';
+  document.getElementById('f-burn').textContent='−'+burn+' €';
+  document.getElementById('f-net').textContent='~'+msg+' €';
   document.getElementById('f-total').innerHTML=fmt(e)+' tout compris';
   document.getElementById('m-btn-amt').innerHTML=fmt(e);
 }
@@ -1332,11 +1359,7 @@ function stopOrbTimer(){
 }
 
 const orbReplies=[
-  "Je vous entends. Pour approfondir ce point, voici ce que je sais sur le sujet : les tokenomics d'Alcorb sont conçues pour créer de la valeur à chaque interaction, pas seulement pour les spéculateurs.",
-  "Bonne question. La confidentialité d'Alcorb repose sur un principe simple : ce qui n'existe pas sur nos serveurs ne peut pas être volé. Le chiffrement E2EE n'est pas une option — c'est l'architecture de base.",
-  "Je comprends votre préoccupation. Le mécanisme d'escrow 90 jours protège à la fois l'expéditeur et le destinataire. Aucun token ne disparaît — ils circulent toujours dans l'écosystème.",
-  "Exactement. C'est l'avantage du temps actif : vous ne payez que le temps réel d'interaction. Pas de surprise, pas de consommation cachée.",
-  "Je surveille ce point. D'après les données actuelles du marché, SOL se situe autour de 130€. Cela signifie que la liquidité initiale nécessite environ 130 000 ALCB pour 1 SOL — le ratio 50/50 est maintenu.",
+  "Bonjour et bienvenue, je suis Orb, cette version n'est qu'une démo, le site sera fonctionnel très bientôt.",
 ];
 let orbReplyIdx=0;
 
